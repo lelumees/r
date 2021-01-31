@@ -7,6 +7,10 @@ body {
   color: #2d3547;
 }
 
+h1 {
+  font-size: 1.4em;
+}
+
 p {
   line-height: 1.5;
 }
@@ -28,12 +32,17 @@ a:hover {
   text-decoration: line-through;
 }
 
+.subtitle {
+  font-weight: 600;
+  margin-bottom: 36px;
+}
+
 .content {
   display: flex;
   flex-direction: row;
   min-height: 100%;
   box-sizing: border-box;
-  padding: 80px;
+  padding: 100px;
   align-items: center;
   justify-content: center;
 }
@@ -44,4 +53,24 @@ a:hover {
 
 .content__image {
   max-width: 420px;
+  padding-left: 80px;
+}
+
+.image-wrap img {
+  border-radius: 24px;
+}
+
+.social {
+  display: flex;
+  flex-direction: row;
+  margin-top: 36px;
+}
+
+.social a {
+  display: block;
+  margin-right: 24px;
+}
+
+.social a:hover {
+  opacity: 0.8;
 }
