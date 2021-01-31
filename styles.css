@@ -53,11 +53,13 @@ a:hover {
 
 .content__image {
   max-width: 420px;
+  min-width: 360px;
   padding-left: 80px;
 }
 
 .image-wrap img {
   border-radius: 24px;
+  width: 100%;
 }
 
 .social {
@@ -73,4 +75,49 @@ a:hover {
 
 .social a:hover {
   opacity: 0.8;
+}
+
+@media (max-width: 1000px) {
+  .content {
+    padding: 80px;
+  }
+
+  .content__image {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .content__text {
+    max-width: 100%;
+  }
+
+  .content__image {
+    max-width: 100%;
+    min-width: initial;
+    width: 100%;
+    margin-top: 36px;
+    padding-left: 0;
+  }
+
+  .content__image img {
+    max-width: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .content {
+    padding: 60px;
+  }
+}
+
+@media (max-width: 360px) {
+  .content {
+    padding: 40px;
+  }
 }
