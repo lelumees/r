@@ -1,123 +1,138 @@
 html,
 body {
-  margin: 0;
-  padding: 0;
-  min-height: 100%;
-  font-family: "Inter", sans-serif;
-  color: #2d3547;
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    font-family: 'Avenir Next', system-ui, -apple-system, BlinkMacSystemFont,
+        'Inter', sans-serif;
+    color: #323c41;
 }
 
 h1 {
-  font-size: 1.4em;
+    font-size: 1.6em;
+    font-weight: 600;
+    margin-bottom: 8px;
 }
 
 p {
-  line-height: 1.5;
+    line-height: 1.5;
 }
 
 a {
-  text-decoration: none;
-  color: #c7034a;
+    text-decoration: none;
+    font-weight: 600;
+    color: #006bff;
 }
 
 a:hover {
-  color: #ff005c;
+    color: #231eff;
+}
+
+::-moz-selection {
+    background: #fffa87;
+    color: #000000;
+}
+
+::selection {
+    background: #fffa87;
+    color: #000000;
 }
 
 .strong {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .strikethrough {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .subtitle {
-  font-weight: 600;
-  margin-bottom: 36px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    margin-top: 0;
 }
 
 .content {
-  display: flex;
-  flex-direction: row;
-  min-height: 100%;
-  box-sizing: border-box;
-  padding: 100px;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    flex-direction: row;
+    min-height: 100%;
+    box-sizing: border-box;
+    padding: 100px;
+    align-items: center;
+    justify-content: center;
 }
 
 .content__text {
-  max-width: 600px;
+    max-width: 600px;
 }
 
 .content__image {
-  max-width: 420px;
-  min-width: 360px;
-  padding-left: 80px;
+    max-width: 420px;
+    min-width: 360px;
+    padding-left: 80px;
 }
 
 .image-wrap img {
-  border-radius: 24px;
-  width: 100%;
+    border-radius: 24px;
+    width: 100%;
 }
 
 .social {
-  display: flex;
-  flex-direction: row;
-  margin-top: 36px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 24px;
 }
 
 .social a {
-  display: block;
-  margin-right: 24px;
+    display: block;
+    margin-right: 16px;
 }
 
 .social a:hover {
-  opacity: 0.8;
+    opacity: 0.8;
 }
 
 @media (max-width: 1000px) {
-  .content {
-    padding: 80px;
-  }
+    .content {
+        padding: 80px;
+    }
 
-  .content__image {
-    min-width: 300px;
-  }
+    .content__image {
+        min-width: 300px;
+    }
 }
 
 @media (max-width: 900px) {
-  .content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
+    .content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 
-  .content__text {
-    max-width: 100%;
-  }
+    .content__text {
+        max-width: 100%;
+    }
 
-  .content__image {
-    max-width: 100%;
-    min-width: initial;
-    width: 100%;
-    margin-top: 36px;
-    padding-left: 0;
-  }
+    .content__image {
+        max-width: 100%;
+        min-width: initial;
+        width: 100%;
+        margin-top: 36px;
+        padding-left: 0;
+    }
 
-  .content__image img {
-    max-width: 420px;
-  }
+    .content__image img {
+        max-width: 420px;
+    }
 }
 
 @media (max-width: 480px) {
-  .content {
-    padding: 60px;
-  }
+    .content {
+        padding: 60px;
+    }
 }
 
 @media (max-width: 360px) {
-  .content {
-    padding: 40px;
-  }
+    .content {
+        padding: 40px;
+    }
 }
