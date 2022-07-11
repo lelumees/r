@@ -67,8 +67,8 @@ a:hover {
 }
 
 .content__image {
-    max-width: 420px;
-    min-width: 360px;
+    max-width: 360px;
+    min-width: 320px;
     padding-left: 80px;
 }
 
@@ -125,13 +125,13 @@ a:hover {
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
     .content {
         padding: 60px;
     }
 }
 
-@media (max-width: 360px) {
+@media (max-width: 480px) {
     .content {
         padding: 40px;
     }
