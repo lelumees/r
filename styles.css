@@ -67,9 +67,9 @@ a:hover {
 }
 
 .content__image {
-    max-width: 360px;
-    min-width: 320px;
+    width: 320px;
     padding-left: 80px;
+    margin-top: 20px;
 }
 
 .image-wrap img {
