@@ -5,13 +5,15 @@ body {
     min-height: 100%;
     font-family: 'Avenir Next', system-ui, -apple-system, BlinkMacSystemFont,
         'Inter', sans-serif;
-    color: #323c41;
+    color: #a0aeb4;
+    background: #1c1e26;
 }
 
 h1 {
     font-size: 1.6em;
     font-weight: 600;
     margin-bottom: 8px;
+    color: #b8cdd5;
 }
 
 p {
@@ -50,6 +52,7 @@ a:hover {
     font-weight: 600;
     margin-bottom: 24px;
     margin-top: 0;
+    color: #b8cdd5;
 }
 
 .content {
@@ -88,8 +91,8 @@ a:hover {
     margin-right: 16px;
 }
 
-.social a:hover {
-    opacity: 0.8;
+.social a:hover path {
+    fill: #006bff;
 }
 
 @media (max-width: 1000px) {
