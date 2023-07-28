@@ -38,6 +38,8 @@ p {
   padding: 100px;
   align-items: center;
   justify-content: center;
+
+  /* opacity: 1; transform: skewX(-48deg) skewY(14deg) scaleX(2) scale(0.5) rotate(var(--rotate)) translateZ(0) ; --rotate:0deg; --x:0px; --y:0px; */
 }
 
 .content__text {
