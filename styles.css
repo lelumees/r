@@ -1,141 +1,173 @@
 html,
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100%;
-    font-family: 'Avenir Next', system-ui, -apple-system, BlinkMacSystemFont,
-        'Inter', sans-serif;
-    color: #a0aeb4;
-    background: #1c1e26;
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #000;
+  background: #fff;
 }
 
 h1 {
-    font-size: 1.6em;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: #b8cdd5;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 32px;
 }
 
 p {
-    line-height: 1.5;
-}
-
-a {
-    text-decoration: none;
-    font-weight: 600;
-    color: #006bff;
-}
-
-a:hover {
-    color: #231eff;
+  font-size: 1rem;
+  line-height: 1.2rem;
+  color: #3d404a;
 }
 
 ::-moz-selection {
-    background: #fffa87;
-    color: #000000;
+  background: #cdffe7;
+  color: #000000;
 }
 
 ::selection {
-    background: #fffa87;
-    color: #000000;
-}
-
-.strong {
-    font-weight: 600;
-}
-
-.strikethrough {
-    text-decoration: line-through;
-}
-
-.subtitle {
-    font-weight: 600;
-    margin-bottom: 24px;
-    margin-top: 0;
-    color: #b8cdd5;
+  background: #cdffe7;
+  color: #000000;
 }
 
 .content {
-    display: flex;
-    flex-direction: row;
-    min-height: 100%;
-    box-sizing: border-box;
-    padding: 100px;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  flex-direction: row;
+  min-height: 100%;
+  box-sizing: border-box;
+  padding: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
 .content__text {
-    max-width: 600px;
+  max-width: 600px;
 }
 
 .content__image {
-    width: 320px;
-    padding-left: 80px;
-    margin-top: 20px;
+  width: 320px;
+  margin-left: 160px;
+  margin-top: 20px;
+  flex-shrink: 0;
 }
 
 .image-wrap img {
-    border-radius: 24px;
-    width: 100%;
+  border-radius: 24px;
+  width: 100%;
 }
 
 .social {
-    display: flex;
-    flex-direction: row;
-    margin-top: 32px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 48px;
+  margin-left: -8px;
 }
 
 .social a {
-    display: block;
-    margin-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  margin-right: 8px;
+  width: 24px;
+  height: 24px;
+
+  transition: all 200ms ease-out;
 }
 
-.social a:hover path {
-    fill: #006bff;
+.social a path {
+  /* fill: #4200FF; */
+}
+
+.social a:hover {
+  transform: scale(1.2);
+}
+
+* {
+  cursor: none;
+}
+
+.cursor {
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+  background-color: white;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  mix-blend-mode: difference;
+  transition: width .2s, height .2s, opacity .2s;
+}
+
+.cursor-click {
+  width: 24px;
+  height: 24px;
+}
+
+.cursor-hover {
+  width: 48px;
+  height: 48px;
+}
+
+.cursor-hover.cursor-click {
+  width: 32px;
+  height: 32px;
+  opacity: .8;
+}
+
+.name-blur {
+  font-size: 2rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #000;
+  filter: blur(0px);
+  transition: all 0.3s;
+}
+
+.name-blur:hover {
+  filter: blur(4px);
 }
 
 @media (max-width: 1000px) {
-    .content {
-        padding: 80px;
-    }
-
-    .content__image {
-        min-width: 300px;
-    }
+  .content {
+    padding: 80px;
+  }
 }
 
 @media (max-width: 900px) {
-    .content {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  .content {
+    flex-direction: column;
+    /* align-items: flex-start; */
+  }
 
-    .content__text {
-        max-width: 100%;
-    }
+  .content__text {
+    max-width: 100%;
+  }
 
-    .content__image {
-        max-width: 100%;
-        min-width: initial;
-        width: 100%;
-        margin-top: 36px;
-        padding-left: 0;
-    }
-
-    .content__image img {
-        max-width: 420px;
-    }
+  .content__image {
+    margin-left: 0;
+    margin-top: 60px;
+  }
 }
 
 @media (max-width: 600px) {
-    .content {
-        padding: 60px;
-    }
+  .content {
+    padding: 60px;
+  }
 }
 
 @media (max-width: 480px) {
-    .content {
-        padding: 40px;
-    }
+  .content {
+    padding: 40px;
+  }
+}
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none;
+  }
+
+  * {
+    cursor: default;
+  }
 }
