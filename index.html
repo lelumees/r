@@ -103,12 +103,20 @@
         timeZone: "Europe/Tallinn",
       });
 
+      var tickTimer = null;
+
+      // Update right as each minute turns over, and again whenever the tab
+      // comes back into view, since background tabs throttle timers.
       function tick() {
         clock.textContent = clockFormat.format(new Date());
+        window.clearTimeout(tickTimer);
+        tickTimer = window.setTimeout(tick, 60000 - (Date.now() % 60000) + 50);
       }
 
       tick();
-      window.setInterval(tick, 15000);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) tick();
+      });
 
       function cssVar(name) {
         return getComputedStyle(document.documentElement)
