@@ -4,6 +4,7 @@
   --muted: #6e6c68;
   --rule: rgb(20 20 19 / 0.12);
   --underline: rgb(20 20 19 / 0.32);
+  --circle: #eab24bbe;
   --accent: #4200FF;
   --selection: #e9e1ff;
 
@@ -20,6 +21,7 @@
     --muted: #9a9791;
     --rule: rgb(237 235 230 / 0.16);
     --underline: rgb(237 235 230 / 0.36);
+    --circle: #f8cb78a9;
     --accent: #8f7cff;
     --selection: #2e2366;
   }

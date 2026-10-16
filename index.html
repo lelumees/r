@@ -35,7 +35,7 @@
       href="https://fonts.googleapis.com/css2?family=Geist:wght@400..600&family=Geist+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=3" type="text/css" />
+    <link rel="stylesheet" href="styles.css?v=4" type="text/css" />
     <script defer src="https://unpkg.com/rough-notation@0.5.1/lib/rough-notation.iife.js"></script>
     <!-- Google tag (gtag.js) -->
     <script
@@ -61,8 +61,8 @@
       <main class="intro">
         <div class="intro__text">
           <h1 class="lede">
-            Hi, I&rsquo;m Rasmus, a <span class="mark">design engineer</span> obsessing over
-            software that <span class="mark">delights</span>.
+            Hi, I&rsquo;m Rasmus, a <span data-note="underline">design engineer</span> obsessing over
+            software that <span data-note="circle">delights</span>.
           </h1>
           <p class="bio">
             Currently at <a class="mark" href="https://flowstep.ai" target="_blank" rel="noopener">flowstep.ai</a>,
@@ -110,34 +110,10 @@
       tick();
       window.setInterval(tick, 15000);
 
-      function shuffleArray(array) {
-        for (let i = array.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-      }
-
-      function accentColor() {
+      function cssVar(name) {
         return getComputedStyle(document.documentElement)
-          .getPropertyValue("--accent")
+          .getPropertyValue(name)
           .trim();
-      }
-
-      // Sit the underline just below the text baseline instead of below the
-      // whole line box, so it hugs its word rather than crowding the next line.
-      function underlinePadding(el) {
-        var probe = document.createElement("span");
-        probe.style.cssText =
-          "display:inline-block;width:0;height:0;vertical-align:baseline";
-        el.append(probe);
-        var baseline = probe.getBoundingClientRect().bottom;
-        probe.remove();
-
-        var rects = el.getClientRects();
-        var boxBottom = rects[rects.length - 1].bottom;
-        var fontSize = parseFloat(getComputedStyle(el).fontSize);
-        return [0, 2, baseline + fontSize * 0.15 - boxBottom, 2];
       }
 
       function startAnnotations() {
@@ -146,48 +122,47 @@
         var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
         var darkMode = window.matchMedia("(prefers-color-scheme: dark)");
 
-        // Only the headline phrases get the underline; the bio just uses a darker shade.
-        var marks = [...document.querySelectorAll(".lede .mark")];
+        var role = document.querySelector('[data-note="underline"]');
+        var delight = document.querySelector('[data-note="circle"]');
 
-        // One annotation per phrase, reused, so nothing piles up in the DOM.
-        var notes = marks.map((el) =>
-          RoughNotation.annotate(el, {
-            type: "underline",
-            color: accentColor(),
-            strokeWidth: 3,
-            iterations: 2,
-            animationDuration: 500,
-            multiline: true,
-            padding: underlinePadding(el),
-            animate: !reduceMotion.matches,
-          })
-        );
+        var underline = RoughNotation.annotate(role, {
+          type: "underline",
+          color: cssVar("--accent"),
+          strokeWidth: 2,
+          iterations: 2,
+          animationDuration: 500,
+          multiline: true,
+          padding: [2, 4],
+          animate: !reduceMotion.matches,
+        });
 
-        if (!reduceMotion.matches) {
-          var order = shuffleArray([...notes]);
-          var step = 0;
-          var current = null;
-          var next = () => {
-            if (current) current.hide();
-            current = order[step];
-            current.show();
-            step = (step + 1) % order.length;
-          };
-          window.setTimeout(next, 400);
-          window.setInterval(next, 3500);
-        }
+        var circle = RoughNotation.annotate(delight, {
+          type: "circle",
+          color: cssVar("--circle"),
+          strokeWidth: 2,
+          iterations: 2,
+          animationDuration: 600,
+          padding: [8, 8],
+          animate: !reduceMotion.matches,
+          rtl: true,
+        });
+
+        // Underline first, then the circle a few seconds later. Both stay.
+        window.setTimeout(() => underline.show(), reduceMotion.matches ? 0 : 400);
+        window.setTimeout(() => circle.show(), reduceMotion.matches ? 0 : 1400);
 
         var resizeTimer = null;
         window.addEventListener("resize", () => {
           window.clearTimeout(resizeTimer);
           resizeTimer = window.setTimeout(() => {
-            notes.forEach((note, i) => (note.padding = underlinePadding(marks[i])));
+            underline.padding = underlinePadding(role);
+            circle.padding = circlePadding(delight);
           }, 200);
         });
 
         darkMode.addEventListener("change", () => {
-          var color = accentColor();
-          notes.forEach((note) => (note.color = color));
+          underline.color = cssVar("--accent");
+          circle.color = cssVar("--circle");
         });
       }
 
